@@ -1,3 +1,7 @@
+coq-contribs
+gits
+opams
+
 *.gem
 *.rbc
 /.config
