@@ -194,6 +194,6 @@ for contrib in contribs do
   end
   # `url`
   File.open("#{path}/url", "w") do |file|
-    file << "git: \"http://ns360531.ip-91-121-163.eu/contribs/#{name}\""
+    file << "git: \"http://ns360531.ip-91-121-163.eu/#{name}\""
   end
 end
