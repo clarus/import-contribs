@@ -1,6 +1,6 @@
-coq-contribs
-gits
-opams
+coq-contribs/
+gits/
+packages/
 
 *.gem
 *.rbc
