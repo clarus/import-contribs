@@ -1,4 +1,2 @@
-import-contribs
-===============
-
-Scipts to import the Coq contribs to OPAM.
+# Import Contribs
+Scripts to import the Coq contribs to OPAM.
