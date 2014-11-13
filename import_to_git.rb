@@ -32,6 +32,7 @@ for contrib, folder in contribs do
   system("cd gits/#{contrib} && git repack -A -d")
   system("cd gits/#{contrib} && git prune")
   system("cd gits/#{contrib} && git gc")
+  puts
 end
 puts "Size after GC:"
 system("du -sh gits")
