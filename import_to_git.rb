@@ -22,8 +22,6 @@ for contrib, folder in contribs do
   puts
 end
 
-exit
-
 # Do some GC.
 puts "Size before GC:"
 system("du -sh gits")
