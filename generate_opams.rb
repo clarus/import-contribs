@@ -173,11 +173,21 @@ names ={
   "lazyPCF" => "lazy-pcf",
   "lc" => "lc" }
 
+# Create the bare repositories.
+system("mkdir -p bares")
+for contrib in contribs do
+  puts contrib
+  name = names[contrib]
+  system("cd gits && git clone --bare #{contrib} ../bares/#{name}.git")
+  system("cd bares/#{name}.git && git remote remove origin")
+  puts
+end
+
 # Create the packages.
 system("mkdir -p packages")
 for contrib in contribs do
+  puts contrib
   name = names[contrib]
-  puts "#{name} (#{contrib})"
   path = "packages/coq:contrib:#{name}/coq:contrib:#{name}.dev"
   system("mkdir -p #{path}")
   # `descr`
@@ -194,6 +204,6 @@ for contrib in contribs do
   end
   # `url`
   File.open("#{path}/url", "w") do |file|
-    file << "git: \"http://ns360531.ip-91-121-163.eu/#{name}\""
+    file << "git: \"git://ns360531.ip-91-121-163.eu/#{name}.git\""
   end
 end

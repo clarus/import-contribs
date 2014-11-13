@@ -36,11 +36,3 @@ for contrib, folder in contribs do
 end
 puts "Size after GC:"
 system("du -sh gits")
-
-# Create the bare repositories.
-system("mkdir -p bares")
-for contrib, _ in contribs do
-  puts contrib
-  system("cd gits && git clone --bare #{contrib} ../bares/#{contrib}.git")
-  puts
-end
