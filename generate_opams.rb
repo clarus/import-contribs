@@ -5,6 +5,11 @@ require 'erb'
 # Get the list of contribs.
 contribs = Dir.glob("gits/*").map {|name| File.basename(name)}.sort
 
+versions = {
+  "8.4.dev" => "8.4",
+  "dev" => "master"
+}
+
 # Create the packages.
 system("mkdir -p packages")
 for contrib in contribs do
@@ -25,6 +30,6 @@ for contrib in contribs do
   end
   # `url`
   File.open("#{path}/url", "w") do |file|
-    file << "git: \"git://ns360531.ip-91-121-163.eu/#{contrib}.git\""
+    file << "git: \"git://clarus.io/#{contrib}.git\""
   end
 end

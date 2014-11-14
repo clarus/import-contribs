@@ -25,7 +25,7 @@ end
 # Do some GC.
 puts "Size before GC:"
 system("du -sh gits")
-for contrib, folder in contribs do
+for contrib, _ in contribs do
   puts contrib
   system("cd gits/#{contrib} && rm -rf .git/refs/original/*")
   system("cd gits/#{contrib} && git reflog expire --all --expire-unreachable=0")
@@ -36,3 +36,13 @@ for contrib, folder in contribs do
 end
 puts "Size after GC:"
 system("du -sh gits")
+
+# Create the local branches.
+for contrib, _ in contribs do
+  puts contrib
+  for branch in `cd gits/#{contrib} && git branch -r`.split("\n") do
+    branch = branch.strip
+    system("cd gits/#{contrib} && git branch #{branch} remotes/#{branch}")
+    system("cd gits/#{contrib} && git branch -rd #{branch}")
+  end
+end

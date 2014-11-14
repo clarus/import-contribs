@@ -166,7 +166,8 @@ names = {
   "ZSearchTrees" => "zsearch-trees",
   "ZornsLemma" => "zorns-lemma",
   "lazyPCF" => "lazy-pcf",
-  "lc" => "lc" }
+  "lc" => "lc"
+}
 
 # Get the list of contribs.
 contribs = Dir.glob("gits/*").map {|name| File.basename(name)}.sort
