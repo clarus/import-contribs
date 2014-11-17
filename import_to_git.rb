@@ -11,14 +11,34 @@ contribs = Dir.glob("coq-contribs/**/description").map do |description|
   [contrib, folder]
 end.sort
 
-# Make individual repositories.
+# Create the separated repositories.
 system("mkdir -p gits")
 for contrib, folder in contribs do
   puts contrib
+  puts "cp -R coq-contribs gits/#{contrib}"
   system("cp -R coq-contribs gits/#{contrib}")
+  puts
+end
+
+# Simplify the history of repositories.
+system("mkdir -p gits")
+for contrib, folder in contribs do
+  puts contrib
   system("cd gits/#{contrib} && git filter-branch --prune-empty --subdirectory-filter #{folder} -- --all")
-  # Remove this empty folder:
-  system("cd gits/#{contrib} && rmdir -p Nijmegen/CoRN/model/semilattice")
+  for branch in `cd gits/#{contrib} && git branch -r`.split("\n") do
+    branch = branch.strip
+    # Make the branch a local one.
+    system("cd gits/#{contrib} && git branch #{branch} remotes/#{branch}")
+    system("cd gits/#{contrib} && git branch -rd #{branch}")
+    # Remove this empty folder:
+    if File.exists?("gits/#{contrib}/Nijmegen/CoRN/model/semilattice") then
+      system("cd gits/#{contrib} && rmdir -p Nijmegen/CoRN/model/semilattice")
+    end
+    # Remove the branch if the contrib was not existing at this time.
+    if `cd gits/#{contrib} && git ls-tree --name-only #{branch} description`.strip == "" then
+      system("cd gits/#{contrib} && git branch -D #{branch}")
+    end
+  end
   puts
 end
 
@@ -36,13 +56,3 @@ for contrib, _ in contribs do
 end
 puts "Size after GC:"
 system("du -sh gits")
-
-# Create the local branches.
-for contrib, _ in contribs do
-  puts contrib
-  for branch in `cd gits/#{contrib} && git branch -r`.split("\n") do
-    branch = branch.strip
-    system("cd gits/#{contrib} && git branch #{branch} remotes/#{branch}")
-    system("cd gits/#{contrib} && git branch -rd #{branch}")
-  end
-end
