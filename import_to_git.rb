@@ -3,6 +3,7 @@
 
 # Import the SVN repository to a unique Git repository.
 system("git svn clone svn://scm.gforge.inria.fr/svnroot/coq-contribs -s")
+system("cd coq-contribs && git gc")
 
 # Find the list of contribs.
 contribs = Dir.glob("coq-contribs/**/description").map do |description|
