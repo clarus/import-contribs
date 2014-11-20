@@ -4,12 +4,8 @@ homepage: "https://github.com/inria-coq-contribs/<%= contrib %>"
 <% if description.license %>
 license: "<%= description.license %>"
 <% end %>
-build: [
-  ["coq_makefile" "-f" "Make" "-o" "Makefile"]
-  [make "-j%{jobs}%"]
-  [make "install"]
-]
-remove: ["rm" "-R" "%{lib}%/coq/user-contrib/<%= install_folders[contrib] %>"]
+<%= description.build %>
+<%= description.remove %>
 depends: [
   "coq" {<%= coq %>}
 ]

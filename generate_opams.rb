@@ -178,187 +178,227 @@ class Description
     }
     field("License") || licenses[@contrib]
   end
-end
 
-# Installation folders, fixed by hand.
-install_folders = {
-  "aac-tactics" => "aac-tactics",
-  "abp" => "ABP",
-  "additions" => "Additions",
-  "ails" => "AILS",
-  "algebra" => "Algebra",
-  "amm11262" => "AMM11262",
-  "angles" => "Angles",
-  "area-method" => "AreaMethod",
-  "atbr" => "ATBR",
-  "automata" => "Automata",
-  "axiomatic-abp" => "AxiomaticABP",
-  "bdds" => "bdds",
-  "bertrand" => "Bertrand",
-  "buchberger" => "Buchberger",
-  "canon-bdds" => "canon-bdds",
-  "cantor" => "Cantor",
-  "cats-in-zfc" => "CatsInZFC",
-  "ccs" => "CCS",
-  "cfgv" => "CFGV",
-  "checker" => "Checker",
-  "chinese" => "chinese",
-  "circuits" => "Circuits",
-  "classical-realizability" => "ClassicalRealizability",
-  "coalgebras" => "Coalgebras",
-  "coinductive-examples" => "CoinductiveExamples",
-  "coinductive-reals" => "coinductive-reals",
-  "color" => "color",
-  "compcert" => "compcert",
-  "concat" => "ConCaT",
-  "constructive-geometry" => "ConstructiveGeometry",
-  "containers" => "Containers",
-  "continuations" => "Continuations",
-  "coq-in-coq" => "CoqInCoq",
-  "coqoban" => "Coqoban",
-  "corn" => "corn",
-  "counting" => "Counting",
-  "cours-de-coq" => "CoursDeCoq",
-  "ctltctl" => "CTLTCTL",
-  "dblib" => "dblib",
-  "demos" => "Demos",
-  "descente-infinie" => "DescenteInfinie",
-  "dictionaries" => "Dictionaries",
-  "distributed-reference-counting" => "DistributedReferenceCounting",
-  "domain-theory" => "DomainTheory",
-  "ergo" => "ergo",
-  "euclidean-geometry" => "EuclideanGeometry",
-  "euler-formula" => "EulerFormula",
-  "exact-real-arithmetic" => "ExactRealArithmetic",
-  "exceptions" => "exceptions",
-  "fairisle" => "Fairisle",
-  "fermat4" => "Fermat4",
-  "finger-tree" => "finger-tree",
-  "firing-squad" => "firing-squad",
-  "float" => "Float",
-  "founify" => "founify",
-  "free-groups" => "FreeGroups",
-  "fsets" => "FSets",
-  "fssec-model" => "FSSecModel",
-  "functions-in-zfc" => "FunctionsInZFC",
-  "fundamental-arithmetics" => "FundamentalArithmetics",
-  "gc" => "GC",
-  "generic-environments" => "GenericEnvironments",
-  "goedel" => "goedel",
-  "graph-basics" => "GraphBasics",
-  "graphs" => "graphs",
-  "group-theory" => "GroupTheory",
-  "groups" => "Groups",
-  "hardware" => "hardware",
-  "hedges" => "Hedges",
-  "high-school-geometry" => "HighSchoolGeometry",
-  "higman-cf" => "higman-cf",
-  "higman-nw" => "HigmanNW",
-  "higman-s" => "HigmanS",
-  "historical-examples" => "HistoricalExamples",
-  "hoare-tut" => "HoareTut",
-  "huffman" => "Huffman",
-  "icharate" => "Icharate",
-  "idxassoc" => "IdxAssoc",
-  "ieee754" => "IEEE754",
-  "int-map" => "IntMap",
-  "ipc" => "IPC",
-  "izf" => "IZF",
-  "jordan-curve-theorem" => "JordanCurveTheorem",
-  "jprover" => "jprover",
-  "karatsuba" => "Karatsuba",
-  "kildall" => "Kildall",
-  "lambda" => "Lambda",
-  "lambek" => "Lambek",
-  "lazy-pcf" => "lazyPCF",
-  "lc" => "lc",
-  "legacy-field" => "legacy-field",
-  "legacy-ring" => "legacy-ring",
-  "lemma-over-loading" => "lemma-over-loading",
-  "lesniewski-mereology" => "LesniewskiMereology",
-  "lin-alg" => "lin-alg",
-  "ltl" => "LTL",
-  "maple-mode" => "MapleMode",
-  "markov" => "markov",
-  "math-classes" => "MathClasses",
-  "maths" => "Maths",
-  "matrices" => "Matrices",
-  "micromega" => "micromega",
-  "mini-compiler" => "MiniCompiler",
-  "minic" => "MiniC",
-  "miniml" => "MiniML",
-  "mod-red" => "ModRed",
-  "multiplier" => "multiplier",
-  "mutual-exclusion" => "MutualExclusion",
-  "nfix" => "Nfix",
-  "orb-stab" => "orb-stab",
-  "otway-rees" => "OtwayRees",
-  "paco" => "paco",
-  "paradoxes" => "Paradoxes",
-  "param-pi" => "ParamPi",
-  "pautomata" => "PAutomata",
-  "persistent-union-find" => "PersistentUnionFind",
-  "pi-calc" => "PiCalc",
-  "pocklington" => "Pocklington",
-  "presburger" => "presburger",
-  "prfx" => "Prfx",
-  "projective-geometry" => "ProjectiveGeometry",
-  "pts" => "PTS",
-  "ptsatr" => "PTSATR",
-  "ptsf" => "ptsf",
-  "qarith" => "QArith",
-  "qarith-stern-brocot" => "QArithSternBrocot",
-  "quicksort-complexity" => "quicksort-complexity",
-  "railroad-crossing" => "RailroadCrossing",
-  "ramsey" => "Ramsey",
-  "random" => "Random",
-  "rational" => "Rational",
-  "recursive-definition" => "RecursiveDefinition",
-  "reflexive-first-order" => "ReflexiveFirstOrder",
-  "regexp" => "RegExp",
-  "relation-algebra" => "RelationAlgebra",
-  "relation-extraction" => "relation-extraction",
-  "rem" => "Rem",
-  "rsa" => "RSA",
-  "ruler-compass-geometry" => "RulerCompassGeometry",
-  "schroeder" => "Schroeder",
-  "search-trees" => "search-trees",
-  "semantics" => "semantics",
-  "shuffle" => "Shuffle",
-  "smc" => "smc",
-  "square-matrices" => "SquareMatrices",
-  "ssreflect" => "Ssreflect",
-  "stalmarck" => "stalmarck",
-  "streams" => "Streams",
-  "string" => "String",
-  "subst" => "Subst",
-  "sudoku" => "Sudoku",
-  "sum-of-two-square" => "SumOfTwoSquare",
-  "tait" => "Tait",
-  "tarski-geometry" => "TarskiGeometry",
-  "three-gap" => "ThreeGap",
-  "topology" => "topology",
-  "tortoise-hare-algorithm" => "TortoiseHareAlgorithm",
-  "tree-automata" => "tree-automata",
-  "tree-diameter" => "TreeDiameter",
-  "weak-up-to" => "WeakUpTo",
-  "zchinese" => "ZChinese",
-  "zf" => "ZF",
-  "zfc" => "ZFC",
-  "zorns-lemma" => "ZornsLemma",
-  "zsearch-trees" => "zsearch-trees"
-}
+  def build
+    case @contrib
+    when "compcert"
+'build: [
+["./configure" "ia32-linux"]
+[make "-j%{jobs}%"]
+]'
+    else
+'build: [
+  ["coq_makefile" "-f" "Make" "-o" "Makefile"]
+  [make "-j%{jobs}%"]
+  [make "install"]
+]'
+    end
+  end
+
+  def remove
+    # Installation folders, fixed by hand.
+    install_folders = {
+      "aac-tactics" => "aac-tactics",
+      "abp" => "ABP",
+      "additions" => "Additions",
+      "ails" => "AILS",
+      "algebra" => "Algebra",
+      "amm11262" => "AMM11262",
+      "angles" => "Angles",
+      "area-method" => "AreaMethod",
+      "atbr" => "ATBR",
+      "automata" => "Automata",
+      "axiomatic-abp" => "AxiomaticABP",
+      "bdds" => "bdds",
+      "bertrand" => "Bertrand",
+      "buchberger" => "Buchberger",
+      "canon-bdds" => "canon-bdds",
+      "cantor" => "Cantor",
+      "cats-in-zfc" => "CatsInZFC",
+      "ccs" => "CCS",
+      "cfgv" => "CFGV",
+      "checker" => "Checker",
+      "chinese" => "chinese",
+      "circuits" => "Circuits",
+      "classical-realizability" => "ClassicalRealizability",
+      "coalgebras" => "Coalgebras",
+      "coinductive-examples" => "CoinductiveExamples",
+      "coinductive-reals" => "coinductive-reals",
+      "color" => "color",
+      "concat" => "ConCaT",
+      "constructive-geometry" => "ConstructiveGeometry",
+      "containers" => "Containers",
+      "continuations" => "Continuations",
+      "coq-in-coq" => "CoqInCoq",
+      "coqoban" => "Coqoban",
+      "corn" => "corn",
+      "counting" => "Counting",
+      "cours-de-coq" => "CoursDeCoq",
+      "ctltctl" => "CTLTCTL",
+      "dblib" => "dblib",
+      "demos" => "Demos",
+      "descente-infinie" => "DescenteInfinie",
+      "dictionaries" => "Dictionaries",
+      "distributed-reference-counting" => "DistributedReferenceCounting",
+      "domain-theory" => "DomainTheory",
+      "ergo" => "ergo",
+      "euclidean-geometry" => "EuclideanGeometry",
+      "euler-formula" => "EulerFormula",
+      "exact-real-arithmetic" => "ExactRealArithmetic",
+      "exceptions" => "exceptions",
+      "fairisle" => "Fairisle",
+      "fermat4" => "Fermat4",
+      "finger-tree" => "finger-tree",
+      "firing-squad" => "firing-squad",
+      "float" => "Float",
+      "founify" => "founify",
+      "free-groups" => "FreeGroups",
+      "fsets" => "FSets",
+      "fssec-model" => "FSSecModel",
+      "functions-in-zfc" => "FunctionsInZFC",
+      "fundamental-arithmetics" => "FundamentalArithmetics",
+      "gc" => "GC",
+      "generic-environments" => "GenericEnvironments",
+      "goedel" => "goedel",
+      "graph-basics" => "GraphBasics",
+      "graphs" => "graphs",
+      "group-theory" => "GroupTheory",
+      "groups" => "Groups",
+      "hardware" => "hardware",
+      "hedges" => "Hedges",
+      "high-school-geometry" => "HighSchoolGeometry",
+      "higman-cf" => "higman-cf",
+      "higman-nw" => "HigmanNW",
+      "higman-s" => "HigmanS",
+      "historical-examples" => "HistoricalExamples",
+      "hoare-tut" => "HoareTut",
+      "huffman" => "Huffman",
+      "icharate" => "Icharate",
+      "idxassoc" => "IdxAssoc",
+      "ieee754" => "IEEE754",
+      "int-map" => "IntMap",
+      "ipc" => "IPC",
+      "izf" => "IZF",
+      "jordan-curve-theorem" => "JordanCurveTheorem",
+      "jprover" => "jprover",
+      "karatsuba" => "Karatsuba",
+      "kildall" => "Kildall",
+      "lambda" => "Lambda",
+      "lambek" => "Lambek",
+      "lazy-pcf" => "lazyPCF",
+      "lc" => "lc",
+      "legacy-field" => "LegacyField",
+      "legacy-ring" => "LegacyRing",
+      "lemma-over-loading" => "lemma-over-loading",
+      "lesniewski-mereology" => "LesniewskiMereology",
+      "lin-alg" => "lin-alg",
+      "ltl" => "LTL",
+      "maple-mode" => "MapleMode",
+      "markov" => "markov",
+      "math-classes" => "MathClasses",
+      "maths" => "Maths",
+      "matrices" => "Matrices",
+      "micromega" => "micromega",
+      "mini-compiler" => "MiniCompiler",
+      "minic" => "MiniC",
+      "miniml" => "MiniML",
+      "mod-red" => "ModRed",
+      "multiplier" => "multiplier",
+      "mutual-exclusion" => "MutualExclusion",
+      "nfix" => "Nfix",
+      "orb-stab" => "orb-stab",
+      "otway-rees" => "OtwayRees",
+      "paco" => "paco",
+      "paradoxes" => "Paradoxes",
+      "param-pi" => "ParamPi",
+      "pautomata" => "PAutomata",
+      "persistent-union-find" => "PersistentUnionFind",
+      "pi-calc" => "PiCalc",
+      "pocklington" => "Pocklington",
+      "presburger" => "presburger",
+      "prfx" => "Prfx",
+      "projective-geometry" => "ProjectiveGeometry",
+      "pts" => "PTS",
+      "ptsatr" => "PTSATR",
+      "ptsf" => "ptsf",
+      "qarith" => "QArith",
+      "qarith-stern-brocot" => "QArithSternBrocot",
+      "quicksort-complexity" => "quicksort-complexity",
+      "railroad-crossing" => "RailroadCrossing",
+      "ramsey" => "Ramsey",
+      "random" => "Random",
+      "rational" => "Rational",
+      "recursive-definition" => "RecursiveDefinition",
+      "reflexive-first-order" => "ReflexiveFirstOrder",
+      "regexp" => "RegExp",
+      "relation-algebra" => "RelationAlgebra",
+      "relation-extraction" => "relation-extraction",
+      "rem" => "Rem",
+      "rsa" => "RSA",
+      "ruler-compass-geometry" => "RulerCompassGeometry",
+      "schroeder" => "Schroeder",
+      "search-trees" => "search-trees",
+      "semantics" => "semantics",
+      "shuffle" => "Shuffle",
+      "smc" => "smc",
+      "square-matrices" => "SquareMatrices",
+      "ssreflect" => "Ssreflect",
+      "stalmarck" => "stalmarck",
+      "streams" => "Streams",
+      "string" => "String",
+      "subst" => "Subst",
+      "sudoku" => "Sudoku",
+      "sum-of-two-square" => "SumOfTwoSquare",
+      "tait" => "Tait",
+      "tarski-geometry" => "TarskiGeometry",
+      "three-gap" => "ThreeGap",
+      "topology" => "topology",
+      "tortoise-hare-algorithm" => "TortoiseHareAlgorithm",
+      "tree-automata" => "tree-automata",
+      "tree-diameter" => "TreeDiameter",
+      "weak-up-to" => "WeakUpTo",
+      "zchinese" => "ZChinese",
+      "zf" => "ZF",
+      "zfc" => "ZFC",
+      "zorns-lemma" => "ZornsLemma",
+      "zsearch-trees" => "zsearch-trees"
+    }
+    if install_folders[@contrib] then
+      "remove: [\"rm\" \"-R\" \"%{lib}%/coq/user-contrib/#{install_folders[@contrib]}\"]"
+    else
+      ""
+    end
+  end
+
+  # A list of additional files.
+  def files
+    case @contrib
+    when "compcert"
+      {
+        "coq:contrib:compcert.install" =>
+'bin: [
+  "ccomp"
+]
+lib: [
+  "runtime/libcompcert.a"
+]
+' }
+    else
+      {}
+    end
+  end
+end
 
 # Create the packages.
 system("mkdir -p packages")
 for contrib in contribs do
   puts contrib
+  description = Description.new(contrib)
   for version, info in versions do
     coq, branch = info
     path = "packages/coq:contrib:#{contrib}/coq:contrib:#{contrib}.#{version}"
     system("mkdir -p #{path}")
     # `descr`
-    description = Description.new(contrib)
     File.open("#{path}/descr", "w") do |file|
       file << description.descr
     end
@@ -370,6 +410,13 @@ for contrib in contribs do
     # `url`
     File.open("#{path}/url", "w") do |file|
       file << "git: \"git://clarus.io/#{contrib}\##{branch}\""
+    end
+    # `files`
+    for name, content in description.files do
+      system("mkdir -p #{path}/files")
+      File.open("#{path}/files/#{name}", "w") do |file|
+        file << content
+      end
     end
   end
 end
