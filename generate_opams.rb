@@ -183,8 +183,8 @@ class Description
     case @contrib
     when "compcert"
 'build: [
-["./configure" "ia32-linux"]
-[make "-j%{jobs}%"]
+  ["./configure" "ia32-linux"]
+  [make "-j%{jobs}%"]
 ]'
     else
 'build: [
@@ -308,7 +308,7 @@ class Description
       "nfix" => "Nfix",
       "orb-stab" => "orb-stab",
       "otway-rees" => "OtwayRees",
-      "paco" => "paco",
+      "paco" => "Paco",
       "paradoxes" => "Paradoxes",
       "param-pi" => "ParamPi",
       "pautomata" => "PAutomata",
@@ -396,26 +396,33 @@ for contrib in contribs do
   description = Description.new(contrib)
   for version, info in versions do
     coq, branch = info
-    path = "packages/coq:contrib:#{contrib}/coq:contrib:#{contrib}.#{version}"
-    system("mkdir -p #{path}")
-    # `descr`
-    File.open("#{path}/descr", "w") do |file|
-      file << description.descr
-    end
-    # `opam`
-    renderer = ERB.new(File.read("opam.erb", encoding: "UTF-8"))
-    File.open("#{path}/opam", "w") do |file|
-      file << renderer.result().gsub(/\n\s*\n/, "\n")
-    end
-    # `url`
-    File.open("#{path}/url", "w") do |file|
-      file << "git: \"git://clarus.io/#{contrib}\##{branch}\""
-    end
-    # `files`
-    for name, content in description.files do
-      system("mkdir -p #{path}/files")
-      File.open("#{path}/files/#{name}", "w") do |file|
-        file << content
+    # Check that the branch exists.
+    exists =
+      `cd gits/#{contrib} && git branch`.split("\n").any? do |real_branch|
+        real_branch.strip == branch
+      end
+    if exists then
+      path = "packages/coq:contrib:#{contrib}/coq:contrib:#{contrib}.#{version}"
+      system("mkdir -p #{path}")
+      # `descr`
+      File.open("#{path}/descr", "w") do |file|
+        file << description.descr
+      end
+      # `opam`
+      renderer = ERB.new(File.read("opam.erb", encoding: "UTF-8"))
+      File.open("#{path}/opam", "w") do |file|
+        file << renderer.result().gsub(/\n\s*\n/, "\n")
+      end
+      # `url`
+      File.open("#{path}/url", "w") do |file|
+        file << "git: \"git://clarus.io/#{contrib}\##{branch}\""
+      end
+      # `files`
+      for name, content in description.files do
+        system("mkdir -p #{path}/files")
+        File.open("#{path}/files/#{name}", "w") do |file|
+          file << content
+        end
       end
     end
   end
