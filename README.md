@@ -5,3 +5,4 @@ Scripts to import the Coq contribs to OPAM.
     ruby rename.rb
     ruby clean_svn.rb
     ruby generate_opams.rb
+    ruby to_bare.rb

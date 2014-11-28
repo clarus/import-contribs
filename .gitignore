@@ -1,7 +1,6 @@
+bares/
 coq-contribs/
-gits/
-gits_back/
-gits_backup/
+gits*/
 packages/
 
 *.gem
