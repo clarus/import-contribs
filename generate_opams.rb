@@ -415,7 +415,7 @@ for contrib in contribs do
       end
       # `url`
       File.open("#{path}/url", "w") do |file|
-        file << "git: \"git://clarus.io/#{contrib}\##{branch}\""
+        file << "git: \"https://gforge.inria.fr/git/coq-contribs/#{contrib}.git\##{branch}\""
       end
       # `files`
       for name, content in description.files do
