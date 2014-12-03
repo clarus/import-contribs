@@ -7,7 +7,7 @@ contribs = Dir.glob("gits/*").map {|name| File.basename(name)}.sort
 
 versions = {
     "8.4.dev" => [">= \"8.4\" & < \"8.5\"", "v8.4"],
-    "dev" => ["= \"dev\"", "trunk"]
+    "dev" => [">= \"8.5\"", "trunk"]
 }
 
 # Description of a contrib.
