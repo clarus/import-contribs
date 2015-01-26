@@ -8,4 +8,5 @@ for contrib in contribs do
   puts contrib
   system("cp -R gits/#{contrib}/.git bares/#{contrib}.git")
   system("cd bares/#{contrib}.git && git config --bool core.bare true")
+  system("cd bares/#{contrib}.git && git update-server-info")
 end
