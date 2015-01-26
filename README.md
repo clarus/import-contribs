@@ -1,5 +1,5 @@
 # Import Contribs
-Scripts to import the Coq contribs to OPAM.
+Scripts to import the Coq contribs to Git.
 
     ruby import_to_git.rb
     ruby rename.rb
