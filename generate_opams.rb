@@ -6,8 +6,8 @@ require 'erb'
 contribs = Dir.glob("gits/*").map {|name| File.basename(name)}.sort
 
 versions = {
-    "8.4.dev" => [">= \"8.4\" & < \"8.5\"", "v8.4"],
-    "dev" => [">= \"8.5\"", "trunk"]
+  "8.4.dev" => [">= \"8.4\" & < \"8.5\"", "v8.4"],
+  "dev" => [">= \"8.5\"", "trunk"]
 }
 
 # Description of a contrib.
@@ -237,6 +237,7 @@ class Description
       "ctltctl" => "CTLTCTL",
       "dblib" => "dblib",
       "demos" => "Demos",
+      "dep-map" => "DepMap",
       "descente-infinie" => "DescenteInfinie",
       "dictionaries" => "Dictionaries",
       "distributed-reference-counting" => "DistributedReferenceCounting",

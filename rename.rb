@@ -42,6 +42,7 @@ names = {
   "CoursDeCoq" => "cours-de-coq",
   "Dblib" => "dblib",
   "Demos" => "demos",
+  "DepMap" => "dep-map",
   "DescenteInfinie" => "descente-infinie",
   "Dictionaries" => "dictionaries",
   "DistributedReferenceCounting" => "distributed-reference-counting",
